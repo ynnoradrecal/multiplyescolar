@@ -1,0 +1,82 @@
+<div class="col-md-12 col-dm-12 col-xs-12">
+	<div class="x_panel">
+
+		<div class="x_title">
+			<h2><i class="fa fa-pencil-square-o"></i> Configuração</h2>
+			<pulse-loader v-if="loader == 'on'" class="loader_forms pull-right"></pulse-loader>
+			<div class="clearfix"></div>
+		</div>
+
+		<div class="x_content">
+			<form class="form-horizontal form-label-left" method="post">
+				<div v-if="form == 'pagseguro'">
+					<!--<pagseguro ref="pagseguro"></pagseguro>-->
+					<h1>{{store.nome }}</h1>
+					<fieldset>
+						<input class="form-control" placeholder="..." name="id" type="hidden" v-model="store.id">
+						<input class="form-control" placeholder="..." name="slug" type="hidden" v-model="store.slug">
+						<div class="form-group" v-bind:class="{'has-error':error.nome}">
+							<div class="col-xs-12">
+								<label for="">Nome do Módulo</label>
+								<input class="form-control" placeholder="..." name="nome" type="text" v-model="store.nome">
+								<span class="help-block" v-for="error in error.nome">{{ error }}</span>
+							</div>
+						</div>
+
+						<div class="form-group" v-bind:class="{'has-error':error.email}">
+							<div class="col-xs-12">
+								<label for="">E-mail</label>
+								<input class="form-control" placeholder="..." name="email" type="text" v-model="store.email">
+								<span class="help-block" v-for="error in error.email">{{ error }}</span>
+							</div>
+						</div>
+
+						<div class="form-group" v-bind:class="{'has-error':error.token}">
+							<div class="col-xs-12">
+								<label for="">Token</label>
+								<input class="form-control" placeholder="..." name="token" type="text" v-model="store.token">
+								<span class="help-block" v-for="error in error.token">{{ error }}</span>
+							</div>
+						</div>
+
+						<div class="form-group" v-bind:class="{'has-error':error.url_redirect}">
+							<div class="col-xs-12">
+								<label for="">URL de Redirecionamento</label>
+								<input class="form-control" placeholder="..." name="url_redirect" type="text" v-model="store.url_redirect">
+								<span class="help-block" v-for="error in error.url_redirect">{{ error }}</span>
+							</div>
+						</div>
+
+						<div class="form-group" v-bind:class="{'has-error':error.status}">
+							<div class="col-xs-12">
+								<label for="">Status</label>
+								<input class="form-control" placeholder="..." name="status" type="text" v-model="store.status">
+								<span class="help-block" v-for="error in error.status">{{ error }}</span>
+							</div>
+						</div>
+
+					</fieldset>
+				</div>
+
+				<div v-else-if="form == 'paypal'">
+					<h1>{{store.nome }}</h1>
+					<fieldset>
+						<div class="col-xs-12">
+							<p>Insira os campos do formulário para o método "{{store.nome }}" usando como base o formulário do Pagseguro.</p>
+						</div>
+					</fieldset>
+
+				</div>
+
+				<div v-else>
+					<div class="empty-configs text-center">
+						<i class="fa fa-bell-o" aria-hidden="true"></i>
+						<h5>Escholha um dos módulos ao lado, para edita-lo.</h5>
+					</div>
+				</div>
+
+			</form>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,99 @@
+<div class="x_panel">
+
+    <div class="x_title">
+		<h2><i class="fa fa-pencil-square-o"></i> {{ title }}</h2>
+		<pulse-loader v-show="bool.load" class="load pull-right"></pulse-loader>
+		<div class="clearfix"></div>
+	</div>
+
+    <div class="x_content">
+        <form action="" class="form-horizontal form-label-left">
+            <fieldset>
+
+                <div class="form-group" style="margin:0">
+                    <div class="col-xs-12">
+                        <ul class="list-block list-unstyled to_do">
+                            <li>
+                                <input type="checkbox" name="status" v-model="model.status"> 
+                                <span style="position:relative;top:2px;left:2px;">Habilitar <b>{{ model.nome }}</b></span>
+                            </li>
+                        </ul>
+                    </div>
+				</div>
+
+                <div class="form-group" v-bind:class="{'has-error':error.nome}">
+					<div class="col-xs-12">
+						<label for="">Nome</label>
+						<input class="form-control" placeholder="..." type="text" v-model="model.nome">
+						<span class="help-block" v-for="error in error.nome">{{ error.replace("post.nome", "Nome") }}</span>
+					</div>
+				</div>
+
+                <div class="form-group">
+					<div class="col-md-6 col-sm-6 col-xs-12" v-bind:class="{'has-error':error.event_id}">
+						<label>Evento</label>
+                        <pulse-loader v-show="!getts.events.length"></pulse-loader>
+						<select v-show="getts.events.length" class="form-control" v-model="model.event_id">
+							<option value="">...</option>
+                            <option :value="item.id" v-for="item in getts.events"> {{ item.name }} </option>
+						</select>
+						<span class="help-block" v-for="error in error.event_id">{{ error.replace("post.event id", "Evento") }}</span>
+					</div>
+					<div class="col-md-6 col-sm-6 col-xs-12" v-bind:class="{'has-error':error.aluno_id}">
+						<label>Aluno</label>
+                        <pulse-loader v-show="!getts.alunos.length"></pulse-loader>
+						<select v-show="getts.alunos.length" class="form-control" v-model="model.aluno_id">
+							<option value="">...</option>
+                            <option :value="item.id" v-for="item in getts.alunos"> {{ item.nome }} </option>
+						</select>
+						<span class="help-block" v-for="error in error.aluno_id">{{ error.replace("post.aluno id", "Aluno") }}</span>
+					</div>
+				</div>
+
+                <div class="form-group">
+                    <div class="col-md-4 col-sm-4 col-xs-12" v-bind:class="{'has-error':error.foto_unit_val}">
+                        <label for="">Preço da Foto</label>
+                        <input id="foto_unit_val" class="form-control" placeholder="0,00" v-mask="'money'" type="text" v-model="model.foto_unit_val">
+                        <span class="help-block" v-for="error in error.foto_unit_val">{{ error.replace("post.foto unit val", "Preço da Foto") }}</span>
+                    </div>
+                    <div class="col-md-5 col-sm-5 col-xs-12" v-bind:class="{'has-error':error.pin}">
+                        <label for="">PIN</label>
+                        <input id="foto_unit_val" class="form-control" placeholder="..." type="text" v-model="model.pin">
+                        <span class="help-block" v-for="error in error.pin">{{ error.replace("post.pin", "PIN") }}</span>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12 text-right">
+                        <label for="">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <button  @click="CreatPin" type="button" class="btn btn-primary">
+				            <i class="fa fa-spinner"></i> Gerar PIN
+			            </button>
+                    </div>
+                </div>
+
+                <div class="" v-bind:class="{'has-error':error.policys}">
+                    <politica ref="policy"></politica>
+                    <div class="col-xs-12">
+                        <span class="help-block" v-for="error in error.policys">{{ error.replace("post.policys", "Políticas") }}</span>
+                    </div>
+                </div>
+
+                <br/>
+                <regras ref="regras"></regras>
+                
+                <div class="" v-bind:class="{'has-error':error.delivery}">
+                    <entrega ref="entrega"></entrega> 
+                    <div class="col-xs-12">
+                        <span class="help-block" v-for="error in error.delivery">{{ error.replace("post.delivery", "Serviços de Entrega") }}</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+					<div class="col-xs-12">
+						<legend>Descrição</legend>
+						<textarea class="form-control" rows="3" placeholder="Descrição..." v-model="model.descricao"></textarea>
+					</div>
+				</div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,151 @@
+<div id="order-view">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Detalhes do Pedido</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+
+            <section class="content invoice">
+                <!-- title row -->
+                <div class="row">
+                    <div class="col-xs-12 invoice-header">
+                        <h1>
+                            {{ info.dc.nome }}
+                            <small class="pull-right">Date: {{ info.data }}</small>
+                        </h1>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- info row -->
+                <div class="row invoice-info">
+                    <div class="col-sm-4 invoice-col">
+                        <br><b>Email:</b> {{ info.dc.email }}
+                        <br><b>Telefone:</b> {{ info.dc.fone || info.dc.cel }}
+                        <br><b>Data de Aniversário:</b> {{ info.dc.niver }}
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4 invoice-col">
+                        <address>
+                            <br><b>CEP:</b> {{ info.de.cep }}<br>
+                            <strong>{{ info.de.end }}, {{ info.de.numero }}
+                            <br>{{ info.de.uf }}, {{ info.de.cidade }}</strong>
+                            <br><b>Pais:</b> {{ info.de.pais }}
+                        </address>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4 invoice-col">
+                        <b>Numero do Pedido</b> {{ info.dp.numero }}
+                        <br><br>
+                        <b>Forma de Pagamento:</b> {{ info.dp.pagamento }}
+                        <br>
+                        <b>Codigo de Transação:</b>
+                        <br> {{ info.dp.cod }}
+                        <br><br>
+                        <b>Entrega: </b> {{ info.dp.entrega }} {{ info.dp.tipo }} - R${{ info.dp.taxa_entrega }}
+                        <br>
+                        <b>Status:</b> {{ info.dp.status }}
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
+                <!-- Table row -->
+                <div class="row">
+                    <br><br>
+                    <div class="col-xs-12 table">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Qtd</th>
+                                    <th>Aluno</th>
+                                    <th>Descrições</th>
+                                    <th>Codigo</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Album do Guilherme</td>
+                                    <td>1</td>
+                                    <td>Guilherme da Silva</td>
+                                    <td>
+                                        <b>Capa: </b> Dourada
+                                        <b>Tamanho: </b> 100x200
+                                    </td>
+                                    <td>455981221</td>
+                                    <td>R$4.500,50</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                    <!-- accepted payments column -->
+                    <div class="col-xs-6">
+                        <p class="lead">Histórico:</p>
+                        <form class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <div class="col-xs-6">
+                                    <label for="">Status</label>
+                                    <select class="form-control">
+                                        <option>...</option>
+                                        <option>Concluído</option>
+                                        <option value="">Pendente</option>
+                                        <option>Cancelado</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <label for="">Comentários</label>
+                                    <textarea class="form-control" rows="3" placeholder="" ></textarea>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 text-right">
+                                <button type="button" class="btn btn-success btn-sm" @click="add_comentario"><i class="fa fa-save"></i> Salvar</button>
+                            </div>
+                        </form>
+                        <div class="col-xs-12">
+                            <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+                                <b><span class="fa fa-check"></span> Completo</b><br> Etsy doostang zoodles disqus groupon
+                                greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity
+                                jajah plickers sifteo edmodo ifttt zimbra.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-xs-6">
+                        <p class="lead">Totais</p>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th style="width:50%">Subtotal:</th>
+                                        <td>R$4.500,50</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Taxa da Entrega:</th>
+                                        <td>R${{ info.dp.taxa_entrega }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total:</th>
+                                        <td>$265.24</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
+            </section>
+        </div>
+    </div>
+
+</div>

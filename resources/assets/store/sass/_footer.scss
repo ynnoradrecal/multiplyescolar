@@ -1,0 +1,99 @@
+footer{
+	background-color: #40454B;
+	padding-top: 15px;
+
+	h2{
+		font-family: Roboto !important;
+		color: #fff;
+		margin-bottom: 20px;
+	}
+
+	p{
+		color: #fff;
+	}
+
+
+	.logos-footer{
+		padding: 30px 0;
+		ul{
+			margin: 0;
+			padding: 0;
+
+			li{
+				display: block;
+				list-style: none;
+				margin-bottom: 20px;
+			}
+		}
+
+		img{
+			-webkit-filter: grayscale(100%);
+	        -moz-filter: grayscale(100%);
+	        -ms-filter: grayscale(100%);
+	        -o-filter: grayscale(100%);
+	        filter: grayscale(100%);
+
+	        &:hover{
+	        	-webkit-filter: grayscale(0%);
+		        -moz-filter: grayscale(0%);
+		        -ms-filter: grayscale(0%);
+		        -o-filter: grayscale(0%);
+		        filter: grayscale(0%);
+	        }
+		}
+	}
+
+
+	.links-loja{
+		
+		ul{
+			margin: 0;
+			padding: 0;
+
+			li{
+				display: block;
+				list-style: none;
+				margin-top: 20px;
+
+				&:before{
+					font-family: Fontawesome;
+					content: '\f0da';
+					font-size: 18px;
+					margin-right: 6px;
+					color: #009de1;
+				}
+
+				a{
+					color: #fff;
+					text-decoration: none;
+
+					&:hover{
+						color: #fff;
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
+
+	.newslatter{
+		h4{
+			color: #fff;
+		}
+
+		input{
+			border-radius: 0;
+		}
+		input[type="submit"]{
+			background: #009de1;
+			color: #fff;
+			font-weight: 700;
+		}
+	}
+
+	.down-footer{
+		background-color: #34393F;
+		padding: 15px 0;
+		color: #fff;
+	}
+}

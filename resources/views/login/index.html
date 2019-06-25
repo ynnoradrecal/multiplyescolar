@@ -1,0 +1,54 @@
+<div>
+  <a class="hiddenanchor" id="signup"></a>
+  <a class="hiddenanchor" id="signin"></a>
+
+  <div class="login_wrapper">
+    <div class="animate form login_form">
+
+      <div class="logo neutro">
+        <img :src="url +'/images/logo_neutro.png'" alt="">
+      </div>
+
+      <div class="x_panel">
+        <div class="x_title">
+          <h2><i class="fa fa-gear"></i>&nbsp;Área Administrativa</h2>
+          <div class="pull-right" v-show="spinner.load">
+            <pulse-loader :color="spinner.color"></pulse-loader>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content"> 
+          <form class="form-horizontal form-label-left input_mask">
+            <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback" v-bind:class="{'has-error':error.login}">
+              <input class="form-control has-feedback-left" v-model="model.login" placeholder="E-mail" type="text">
+              <span style="margin: 6px 0px;" class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+              <span class="help-block" v-for="error in error.login">{{ error.replace('login', 'Email') }}</span>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback" v-bind:class="{'has-error':error.senha}">
+              <input class="form-control has-feedback-left" v-model="model.senha" placeholder="Senha" type="password">
+              <span style="margin: 6px 0px;" class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
+              <span class="help-block" v-for="error in error.senha">{{ error.replace('senha', 'Senha') }}</span>
+            </div>
+            <div class="clearfix"></div>
+            <div class="ln_solid"></div>
+            <div class="form-group">
+              <div class="col-md-8 col-sm-8 col-xs-12">
+                <a href="#">Esqueceu sua senha?</a>
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-12">
+                <button type="submit" @click.prevent="login" class="btn btn-success">&nbsp;&nbsp;Entrar&nbsp;&nbsp;</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="text-center">
+        <div>
+          <h2>WA5 AMeC</h2>
+          <p>©2017 Todos Direitos Reservados.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

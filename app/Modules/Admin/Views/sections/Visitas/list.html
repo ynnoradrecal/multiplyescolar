@@ -1,0 +1,34 @@
+<div class="x_panel">
+    <div class="x_title">
+        <h2><i class="fa fa-cube"></i>Lista de Redes</h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+            <div v-show="loader">
+				<pulse-loader class="loader text-center"></pulse-loader>
+			</div>
+            <div v-show="!loader">
+                <!--<table id="list" class="table table-striped table-bordered" width="100%"> -->
+                <table class="table table-striped table-bordered" width="100%">
+                    <thead style="">
+                        <tr class="">
+                            <th class="">ID</th>
+                            <th class="">IP</th>
+                            <th class="">Rota</th>
+                            <th class="">Acessos</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr v-for="item in data">
+                            <td>{{ item.id }}</td>
+                            <td>{{ item.ip }}</td>
+                            <td>{{ item.pagina }}</td>
+                            <td>{{ item.contador }}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+    </div>
+</div>

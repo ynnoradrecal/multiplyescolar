@@ -1,0 +1,232 @@
+<div class="col-md-12 col-dm-12 col-xs-12">
+	<div class="x_panel">
+
+		<div class="x_title">
+			<h2><i class="fa fa-pencil-square-o"></i> Configuração</h2>
+			<pulse-loader v-if="loader == 'on'" class="loader_forms pull-right"></pulse-loader>
+			<div class="clearfix"></div>
+		</div>
+
+		<div class="x_content">
+			<form class="form-horizontal form-label-left" method="post">
+
+				<div class="form-group" style="margin:0" v-show="type">
+					<div class="col-xs-12">
+						<ul class="list-block list-unstyled to_do">
+							<li v-if="type == 'correios'">
+								<input id="status" type="checkbox" v-model="correios.status"> 
+								<span style="position:relative;top:2px;left:2px;">Habilitar <b>{{ correios.nome }}</b></span>
+							</li>
+							<li v-else-if="type == 'transportadora'">
+								<input id="status" type="checkbox" v-model="transportadora.status"> 
+								<span style="position:relative;top:2px;left:2px;">Habilitar <b>{{ transportadora.nome }}</b></span>
+							</li>
+							<li v-else-if="type == 'retirar_no_local'">
+								<input id="status" type="checkbox" v-model="retirar_no_local.status"> 
+								<span style="position:relative;top:2px;left:2px;">Habilitar <b>{{ retirar_no_local.nome }}</b></span>
+							</li>
+							<li v-else>
+								<input id="status" type="checkbox" v-model="frete_gratis.status"> 
+								<span style="position:relative;top:2px;left:2px;">Habilitar <b>{{ frete_gratis.nome }}</b></span>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div v-show="type == 'correios'">
+					<h1>{{ store.nome }}</h1>
+					<fieldset>
+
+						<div class="form-group" v-bind:class="{'has-error':error.nome}">
+							<div class="col-xs-12">
+								<label for="">Nome do Módulo</label>
+								<input disabled class="form-control" placeholder="..." name="nome" type="text" v-model="correios.nome">
+								<span class="help-block" v-for="error in error.nome">{{ error }}</span>
+							</div>
+						</div>
+
+						<div class="form-group" v-bind:class="{'has-error':error.cep_origem}">
+							<div class="col-xs-12">
+								<label for="">Cep de Origem</label>
+								<input class="form-control" placeholder="..." type="text" v-model="correios.cep_origem">
+								<span class="help-block" v-for="error in error.cep_origem">{{ error }}</span>
+							</div>
+						</div>
+
+						<div class="form-group" v-bind:class="{'has-error':error.dias_adicionais}">
+							<div class="col-xs-12">
+								<label for="">Dias Adicionais</label>
+								<input class="form-control" placeholder="..." type="text" v-model="correios.dias_adicionais">
+								<span class="help-block" v-for="error in error.dias_adicionais">{{ error }}</span>
+							</div>
+						</div>
+
+						<div class="form-group" v-bind:class="{'has-error':error.taxa_adicional}">
+							<div class="col-xs-12">
+								<label for="">Taxa Adicional</label>
+								<input class="form-control" placeholder="..." type="text" v-model="correios.taxa_adicional">
+								<span class="help-block" v-for="error in error.taxa_adicional">{{ error }}</span>
+							</div>
+						</div>
+
+						<br>
+
+						<fieldset>
+							<div class="col-xs-12">
+								<legend>Serviço</legend>
+							</div>
+						</fieldset>
+
+						<div class="form-group" v-bind:class="{'has-error':error.tipo_servico}">
+							<div class="col-xs-12">
+								<label for="">Tipo de Serviço</label>
+								<input class="form-control" placeholder="..." type="text" v-model="correios.tipo_servico">
+								<span class="help-block" v-for="error in error.tipo_servico">{{ error }}</span>
+							</div>
+						</div>
+
+						<div class="form-group" v-bind:class="{'has-error':error.pac}">
+							<div class="col-xs-12">
+								<ul class="list-block list-unstyled to_do">
+									<li>
+										<input id="pac" type="checkbox" v-model="correios.pac"/>
+										<span>PAC</span>			
+									</li>
+									<li>
+										<input id="sedex" type="checkbox" v-model="correios.sedex"/>
+										<span>SEDEX</span>
+									</li>
+									<li>
+										<input id="sedex_10" type="checkbox" v-model="correios.sedex_10"/>
+										<span>SEDEX 10</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="form-group" v-bind:class="{'has-error':error.altura}">
+							<div class="col-xs-12">
+								<label for="">Altura Mínima</label>
+								<input class="form-control" placeholder="..." type="text" v-model="correios.altura">
+								<span class="help-block" v-for="error in error.altura">{{ error }}</span>
+							</div>
+						</div>
+
+						<div class="form-group" v-bind:class="{'has-error':error.largura}">
+							<div class="col-xs-12">
+								<label for="">Largura Mínima</label>
+								<input class="form-control" placeholder="..." type="text" v-model="correios.largura">
+								<span class="help-block" v-for="error in error.largura">{{ error }}</span>
+							</div>
+						</div>
+
+						<div class="form-group" v-bind:class="{'has-error':error.comprimento}">
+							<div class="col-xs-12">
+								<label for="">Comprimento Mínimo</label>
+								<input class="form-control" placeholder="..." type="text" v-model="correios.comprimento">
+								<span class="help-block" v-for="error in error.comprimento">{{ error }}</span>
+							</div>
+						</div>
+
+					</fieldset>
+				</div>
+
+				<div v-show="type == 'frete_gratis'">
+					<h1>{{ store.nome }}</h1>
+					<fieldset>
+						
+						<div class="form-group" v-bind:class="{'has-error':error.nome}">
+							<div class="col-xs-12">
+								<label for="">Nome do Módulo</label>
+								<input disabled class="form-control" placeholder="..." type="text" v-model="frete_gratis.nome">
+								<span class="help-block" v-for="error in error.nome">{{ error }}</span>
+							</div>
+						</div>
+	
+						<div class="form-group" v-bind:class="{'has-error':error.titulo}">
+							<div class="col-xs-12">
+								<label for="">Titulo</label>
+								<input class="form-control" placeholder="..." type="text" v-model="frete_gratis.titulo">
+								<span class="help-block" v-for="error in error.titulo">{{ error }}</span>
+							</div>
+						</div>
+
+						<div class="form-group" v-bind:class="{'has-error':error.valor_minimo}">
+							<div class="col-xs-12">
+								<label for="">Valor Mínimo do Pedido</label>
+								<input class="form-control" placeholder="..." type="text" v-model="frete_gratis.valor_minimo">
+								<span class="help-block" v-for="error in error.valor_minimo">{{ error }}</span>
+							</div>
+						</div>
+
+
+					</fieldset>
+
+				</div>
+				
+				<div v-show="type == 'retirar_no_local'">
+					<h1>{{ store.nome }}</h1>
+					<div class="form-group" v-bind:class="{'has-error':error.nome}">
+						<div class="col-xs-12">
+							<label for="">Nome do Módulo</label>
+							<input disabled class="form-control" placeholder="..." type="text" v-model="retirar_no_local.nome">
+							<span class="help-block" v-for="error in error.nome">{{ error }}</span>
+						</div>
+					</div>
+					<div class="form-group" v-bind:class="{'has-error':error.titulo}">
+						<div class="col-xs-12">
+							<label for="">Titulo</label>
+							<input class="form-control" placeholder="..." type="text" v-model="retirar_no_local.titulo">
+							<span class="help-block" v-for="error in error.titulo">{{ error }}</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-xs-12">
+							<label>Endereço</label>
+							<textarea class="form-control" rows="8" placeholder="Endereço..." v-model="retirar_no_local.endereco"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div v-show="type == 'transportadora'">
+					<h1>{{ store.nome }}</h1>
+					<div class="form-group" v-bind:class="{'has-error':error.nome}">
+						<div class="col-xs-12">
+							<label for="">Nome do Módulo</label>
+							<input disabled class="form-control" placeholder="..." type="text" v-model="transportadora.nome">
+							<span class="help-block" v-for="error in error.nome">{{ error }}</span>
+						</div>
+					</div>
+					<div class="form-group" v-bind:class="{'has-error':error.titulo}">
+						<div class="col-xs-12">
+							<label for="">Titulo</label>
+							<input class="form-control" placeholder="..." type="text" v-model="transportadora.titulo">
+							<span class="help-block" v-for="error in error.titulo">{{ error }}</span>
+						</div>
+					</div>
+					<div class="form-group" v-bind:class="{'has-error':error.titulo}">
+						<div class="col-xs-12">
+							<label for="">Preço</label>
+							<input class="form-control" placeholder="..." type="text" v-model="transportadora.preco">
+							<span class="help-block" v-for="error in error.titulo">{{ error }}</span>
+						</div>
+					</div>
+				</div>
+
+				<div v-show="!type" class="text-center">
+
+					<p v-for="i in 5">&nbsp;</p>
+
+					<i class="fa fa-bell-o fa-5x"></i>
+					<h3>Bem-vindo ao módulo <b>Entrega</b></h3>
+					<p>Escolha um módulo ao lado para realizar as configurações.</p>
+			
+					<p v-for="i in 5">&nbsp;</p>
+
+				</div>
+
+			</form>
+		</div>
+
+	</div>
+</div>

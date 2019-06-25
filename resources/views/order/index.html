@@ -1,0 +1,32 @@
+<div class="" id="order">
+
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Vendas</h3>
+        </div>
+        <nav-button 
+            v-if="layout == 'view'">
+        </nav-button>
+    </div>
+    
+    <div class="clearfix"></div>
+
+    <div class="row">
+        
+        <list ref="list" v-if="layout == ''"></list>
+    
+        <order-view 
+            ref="orderview" 
+            v-if="layout == 'order_view'">
+        </order-view>
+
+        <aband-cart
+            ref="abandcart" 
+            v-if="layout == 'aband-cart'">
+        </aband-cart>
+        
+    </div>
+
+    <ms-box ref="msbox"></ms-box>
+
+</div>

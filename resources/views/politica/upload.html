@@ -1,0 +1,25 @@
+<div :class="'modal fade dropzone-modal'+ index" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <dropzone 
+                            ref="dropzone"
+                            :id="'VueDropzone'+ index" 
+                            :url="host +'/upload'"
+                            :headers="headers"
+                            :thumbnail-height="thumbnailHeight"
+                            :thumbnail-width="thumbnailWidth"
+                            :max-number-of-files="4"
+                            :accepted-file-types="acceptedFileTypes"
+                            :language="lang"
+                            v-on:vdropzone-success="ShowSucess">
+                            <input type="hidden" name="methods" :value="'saveFileUpload'">
+                        </dropzone>  
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

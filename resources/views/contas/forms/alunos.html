@@ -1,0 +1,118 @@
+<fieldset v-show="status">
+    <div class="form-group" v-bind:class="{'has-error':error.nome}">
+        <div class="col-xs-12">
+            <label for="">Nome do Aluno:</label>
+            <input class="form-control" placeholder="..." type="text" v-model="model.nome">
+            <span class="help-block" v-for="error in error.nome">{{ error.replace('nome', 'Nome do Aluno') }}</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4 col-sm-4 col-xs-12" v-bind:class="{'has-error':error.data_nascimento}">
+            <label for="">Data de Nascimento:</label>
+            <input class="form-control" v-mask="'99/99/9999'" placeholder="__/__/____" type="text" v-model="model.data_nascimento">
+            <span class="help-block" v-for="error in error.data_nascimento">{{ error }}</span>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <label for="">Id:</label>
+            <input class="form-control" placeholder="RG/CPF" type="text" v-model="model.rg_cpf">
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12" v-bind:class="{'has-error':error.instituicao}">
+            <label for="">Instituição:</label>
+            <select class="form-control" v-model="model.instituicao">
+                <option>...</option>
+                <option :value="item.id" v-for="item in list_instituicoes">{{ item.nome }}</option>
+            </select>
+            <span class="help-block" v-for="error in error.instituicao">{{ error.replace('instituicao', 'Instituição') }}</span>
+        </div>
+    </div>
+
+    <br>
+    <fieldset>
+
+        <div class="col-xs-12">
+            <legend>Responsável</legend>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6 col-sm-6 col-xs-12" v-bind:class="{'has-error':error.responsavel}">
+                <label for="">Nome:</label>
+                <input class="form-control" placeholder="Nome do responsável" type="text" v-model="model.responsavel">
+                <span class="help-block" v-for="error in error.responsavel">{{ error.replace('responsavel', 'Nome do Responsavel') }}</span>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12" v-bind:class="{'has-error':error.email}">
+                <label for="">Email:</label>
+                <input class="form-control" placeholder="Email do responsável" type="text" v-model="model.email">
+                <span class="help-block" v-for="error in error.email">{{ error.replace('email', 'Email do Responsavel') }}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6 col-sm-6 col-xs-12" v-bind:class="{'has-error':error.telefone}">
+                <label for="">Telefone:</label>
+                <input class="form-control" v-mask="'( 99 ) 9999-9999'" placeholder="( __ ) ____-____" type="text" v-model="model.telefone">
+                <span class="help-block" v-for="error in error.telefone">{{ error }}</span>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <label for="">Celular:</label>
+                <input class="form-control" v-mask="'( 99 ) 9 9999-9999'" placeholder="( __ ) _ ____-____" type="text" v-model="model.celular">
+            </div>
+        </div>
+    </fieldset>
+
+    <br>
+    <fieldset>
+        <div class="col-xs-12">
+            <legend>Endereço</legend>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6 col-sm-4 col-xs-12" v-bind:class="{'has-error':error.cep}">
+                <label for="">CEP:</label>
+                <input class="form-control" v-mask="'99999-999'" placeholder="_____-___" type="text" v-model="model.cep" @keyup="getAddressCep">
+                <span class="help-block" v-for="error in error.cep">{{ error.replace('cep', 'CEP') }}</span>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-12" v-bind:class="{'has-error':error.numero}">
+                <label for="">Numero:</label>
+                <input class="form-control" placeholder="..." type="text" v-model="model.numero">
+                <span class="help-block" v-for="error in error.numero">{{ error.replace('numero', 'Numero') }}</span>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <label for="">Complemento:</label>
+                <input class="form-control" placeholder="..." type="text" v-model="model.complemento">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12" v-bind:class="{'has-error':error.logradouro}">
+                <label for="">Endereço:</label>
+                <input class="form-control" placeholder="..." type="text" v-model="model.logradouro">
+                <span class="help-block" v-for="error in error.logradouro">{{ error.replace('logradouro', 'Endereço') }}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-5 col-sm-5 col-xs-12" v-bind:class="{'has-error':error.bairro}">
+                <label for="">Bairro:</label>
+                <input class="form-control" placeholder="..." type="text" v-model="model.bairro">
+                <span class="help-block" v-for="error in error.bairro">{{ error.replace('bairro', 'Bairro') }}</span>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12" v-bind:class="{'has-error':error.estado}">
+                <label for="">Estado:</label>
+                <input class="form-control" placeholder="..." type="text" v-model="model.estado">
+                <span class="help-block" v-for="error in error.estado">{{ error.replace('estado', 'Estado') }}</span>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12" v-bind:class="{'has-error':error.cidade}">
+                <label for="">Cidade:</label>
+                <input class="form-control" placeholder="..." type="text" v-model="model.cidade">
+                <span class="help-block" v-for="error in error.cidade">{{ error.replace('cidade', 'Cidade') }}</span>
+            </div>
+        </div>
+    </fieldset>
+    <br>
+    <fieldset>
+        <div class="col-xs-12">
+            <legend>Descrição</legend>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12">
+                <textarea class="form-control" rows="3" placeholder="Descrição..." v-model="model.descricao"></textarea>
+            </div>
+        </div>
+    </fieldset>
+</fieldset>

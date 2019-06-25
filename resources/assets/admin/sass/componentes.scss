@@ -1,0 +1,17 @@
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "../../../../node_modules/font-awesome/scss/font-awesome.scss";
+
+@import "../../../../node_modules/gentelella/vendors/iCheck/skins/flat/blue.scss";
+@import "../../../../node_modules/gentelella/vendors/dropzone/dist/dropzone.scss";
+@import "../../../../node_modules/vue2-autocomplete-js/dist/style/vue2-autocomplete.scss";
+@import "../../../../node_modules/gentelella/src/scss/custom.scss";
+
+@import "../../../../node_modules/blueimp-file-upload/css/jquery.fileupload.scss";
+@import "../../../../node_modules/blueimp-file-upload/css/jquery.fileupload-ui.scss";
+@import "../../../../node_modules/blueimp-file-upload/css/jquery.fileupload-ui.scss";
+
+// bootstrap-daterangepicker                     
+@import "../../../../node_modules/gentelella/vendors/bootstrap-daterangepicker/daterangepicker.scss";
+
+@import "./components/waterfall.scss";
+

@@ -1,0 +1,25 @@
+<div class="" id="loja">
+
+	<div class="page-title">
+		<div class="title_left">
+			<h3>Loja</h3>
+		</div>
+		<div class="title_right text-right">
+			<button v-show="button" @click="update" type="button" class="btn btn-primary">
+				<i class="fa fa-refresh"></i> Atualizar
+			</button>
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	<div class="row">
+		<div class="col-md-5 col-sm-5 col-xs-12">
+			<list ref="list"></list>
+		</div>
+		<div class="col-md-7 col-sm-7 col-xs-12">
+			<forms ref="form"></forms>
+		</div>
+	</div>
+
+</div>

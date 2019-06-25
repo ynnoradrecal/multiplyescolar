@@ -1,0 +1,86 @@
+<div class="col-md-7 col-dm-7 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2><i class="fa fa-cube"></i> Novo Usuário</h2>
+            <pulse-loader v-show="bool.load" class="loader_form pull-right"></pulse-loader>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <form class="form-horizontal form-label-left" method="post" enctype="multipart/form-data">   
+                    
+                    <div class="col-xs-12">
+                        <div class="form-group" v-bind:class="{'has-error':error.nome}">
+                            <label for="">Nome</label>
+                            <input class="form-control" placeholder="..." type="text" v-model="model.nome">
+                            <span class="help-block" v-for="error in error.nome">{{ error.replace("post.nome", "Nome") }}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xs-12">
+                        <div class="form-group" v-bind:class="{'has-error':error.email}">
+                            <label for="">Email</label>
+                            <input class="form-control" placeholder="..." type="text" v-model="model.email">
+                            <span class="help-block" v-for="error in error.email">{{ error.replace("post.email", "Email") }}</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12" v-bind:class="{'has-error':error.senha}">
+                        <div class="form-group">
+                            <label for="">Senha</label>
+                            <input class="form-control" placeholder="..." type="password" v-model="model.senha">
+                            <span class="help-block" v-for="error in error.senha">{{ error.replace("post.senha", "Senha") }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12" v-bind:class="{'has-error':error.confirmar}">
+                        <div class="form-group">
+                            <label for="">Confirmar</label>
+                            <input class="form-control" placeholder="..." type="password" v-model="model.confirmar">
+                            <span class="help-block" v-for="error in error.confirmar">{{ error.replace("post.confirmar", "Confirmar") }}</span>
+                        </div>
+                    </div>
+
+                    <!-- <div class="col-xs-12" v-bind:class="{'has-error':error.id_grupo}">
+                        <div class="form-group">
+                            <label for="">Grupo</label>
+                            <pulse-loader v-show="bool.grupo" class="loader_form"></pulse-loader>
+                            <select v-show="!bool.grupo" id="heard" class="form-control" v-model="model.id_grupo">
+                                <option value="" v-for="grupo in grupos" :value="grupo.id"> {{ grupo.nome }} </option>
+                            </select>
+                            <span class="help-block" v-for="error in error.id_grupo">{{ error.replace("post.id grupo", "Grupo") }}</span>
+                        </div>
+                    </div> -->
+
+                    <!-- <div class="col-xs-12" v-bind:class="{'has-error':error.authadmin}">
+                        <div class="form-group">
+                            <label for="">Senha Administrador</label>
+                            <input class="form-control" placeholder="..." type="password" v-model="model.admin.senha">
+                            <span class="help-block" v-for="error in error.authadmin">{{ error.replace("post.admin.senha", "Senha Administrador") }}</span>
+                        </div>
+                    </div> -->
+
+                    <!-- <avatar ref="avatar" :file="model.foto"></avatar> -->
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <legend>Avatar</legend>
+                            <div class="profile_pic">
+                                <img :src="url +'/uploads/avatar/img.jpg'" alt="..." class="img-circle profile_img">
+                            </div><br>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" @click="OpenModal('.dropzone-modal')">
+                                <i class="fa fa-plus"></i> Imagens
+                            </button>
+                        </div>
+                    </div>
+
+                    <upload ref="upload" :host="host"></upload>
+
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <legend>Descrição</legend>
+                            <textarea class="form-control" rows="3" placeholder="Descrição..." v-model="model.descricao"></textarea>
+                        </div>
+                    </div>
+
+            </form>
+        </div>
+    </div>
+</div>

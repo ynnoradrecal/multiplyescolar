@@ -1,0 +1,40 @@
+<div class="" id="events">
+
+	<div class="page-title">
+		<div class="title_left">
+			<h3>Entrega</h3>
+		</div>
+		<div class="title_right text-right">
+			<div class="btn-order-view">
+				<!--<button v-show="button" @click="deleteMethod" type="button" class="btn btn-danger">
+					<i class="fa fa-trash"></i> &nbsp;Deletar
+				</button>
+
+				<button v-show="button" @click="newMethod" type="button" class="btn btn-primary">
+					<i class="fa fa-pencil"></i> &nbsp;Novo
+				</button>-->
+
+				<button v-show="button" @click="update" type="button" class="btn btn-success">
+					<i class="fa fa-refresh"></i> &nbsp;Atualizar
+				</button>
+
+				<!--<button v-show="button" @click="create" type="button" class="btn btn-success">
+					<i class="fa fa-save"></i> &nbsp;Salvar
+				</button>-->
+			</div>
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	<div class="row">
+		<div class="col-md-5 col-sm-5 col-xs-12">
+			<list ref="list"></list><!-- /List -->
+		</div>
+		<div class="col-md-7 col-sm-7 col-xs-12">
+			<forms ref="form"></forms>
+		</div>
+	</div>
+
+</div>
+<!-- /eventos -->

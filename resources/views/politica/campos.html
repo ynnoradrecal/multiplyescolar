@@ -1,0 +1,13 @@
+<div class="form-group">
+    <div class="col-xs-12">
+        <label for="">Campos</label>
+    </div>
+    <div class="col-xs-12">
+        <ul class="list-block list-unstyled to_do">
+            <li v-for="field in model">
+                <input :name="field.slug" :tipo="field.tipo" :value="field.id" type="checkbox"> 
+                <span>{{ field.text }}</span>
+            </li>
+        </ul>
+    </div>
+</div>

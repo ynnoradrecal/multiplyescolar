@@ -1,0 +1,122 @@
+<form class="">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2><i class="fa fa-pencil-square-o"></i> Nova Política </h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <fieldset class="form-horizontal form-label-left">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label for="">Nome</label>
+                        <input class="form-control" placeholder="..." type="text" v-model="policy.name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label for="">Descrição</label>
+                        <textarea class="form-control" rows="3" placeholder="..." v-model="policy.description"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <div class="x_title">
+                            <h2>Configurações dos Produtos</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li class="dropdown pull-right">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-gears"></i></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a data-toggle="modal" data-target=".bs-example-modal-xs">Add Tipo de Campos</a>
+                                    </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <label>Tipo de Campos</label>
+                        <select class="select2_multiple form-control" multiple="true">
+                            <option v-for="field in fields" @click="add_fields( field.text )">{{ field.text }}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <label for="fullname">Campos Selecionados</label>
+                        <div id="tags_1_tagsinput" class="tagsinput" style="width: auto; min-height: 78px; height: 78px;">
+                            <span class="tag" v-for="(field, index) in policy.fields"><span>{{ field }}&nbsp;&nbsp;</span>
+                                <a href="#" title="Remover Campo" @click.prevent="remove_el_list( index, 'fields' )"><i class="fa fa-remove"></i></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                        <label for="fullname">Tipo de Marcação</label>
+                        <select class="form-control" v-model="policy.marking">
+                            <option>Único</option>
+                            <option>Múltiplo</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <label>Quantidade</label>
+                        <input class="form-control" type="number" name="quantity" min="1" max="12" v-model="policy.amount">
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-12">
+                        <label>&nbsp;</label>
+                        <button type="button" class="btn btn-success" @click="create_list(true)">Gerar Produtos</button>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="x_content">
+            <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel" v-for="(product, x) in policy.products">
+                    <a class="panel-heading" role="tab" :id="'heading_'+ x" data-toggle="collapse" data-parent="#accordion" :href="'#collapse_'+ x" aria-expanded="true" :aria-controls="'collapse_'+ x">
+                        <h4 class="panel-title pull-left">
+                            <i class="fa fa-terminal"></i> <strong>{{ policy.products.name }}</strong>
+                        </h4>
+                        <a href="#" class="pull-right" @click.prevent.stop="remove_el_list(x, 'products')">
+                            <i class="fa fa-remove"></i>
+                        </a>
+                        <div class="clearfix"></div>
+                    </a>
+                    <div :id="'collapse_'+ x" class="panel-collapse collapse" role="tabpanel" :aria-labelledby="'heading_'+ x" aria-expanded="false">
+                        <div class="panel-body">
+                            <fieldset class="form-horizontal form-label-left">
+                                <div class="form-group">
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <label><i class="fa fa-terminal"></i> Nome</label>
+                                        <input class="form-control" placeholder="..." type="text" v-model="policy.products.name">
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <label><i class="fa fa-dollar"></i> Valor</label>
+                                        <input class="form-control" placeholder="R$..." type="text" v-model="policy.products.price">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <label><i class="fa fa-file-photo-o"></i> Anexar</label>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <drop-upload></drop-upload>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <label><i class="fa fa-pencil-square-o"></i> Descrição</label>
+                                        <textarea class="form-control" rows="3" placeholder="..." v-model="policy.products.description"></textarea>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</form>

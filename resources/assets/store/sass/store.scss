@@ -1,0 +1,21 @@
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "../../../../node_modules/font-awesome/scss/font-awesome.scss";
+@import "../../../../node_modules/icheck/skins/flat/blue.scss";
+@import "../../../../node_modules/sweetalert/dist/sweetalert.scss";
+// @import "../../../../node_modules/compass/css3/border-radius";
+
+@import 'vars';
+@import 'header';
+@import 'footer';
+@import 'home';
+@import 'login-cadastro';
+@import 'contato';
+@import 'eventos';
+@import 'galerias';
+@import 'modals';
+@import 'area-cliente';
+@import 'repositorios';
+@import 'politicas';
+@import 'finaliza-compra';
+@import 'tipo-produto';
+@import 'custom';

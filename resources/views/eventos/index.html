@@ -1,0 +1,44 @@
+<div class="" id="events">
+
+	<div class="page-title">
+		<div class="title_left">
+			<h3>Eventos</h3>
+		</div>
+		<div class="title_right text-right">
+
+			<button v-show="button.destroy" @click="destroy" type="button" class="btn btn-danger">
+				<i class="fa fa-trash"></i> Deletar
+			</button>
+
+			<button v-show="button.add" @click="add" type="button" class="btn btn-primary">
+				<i class="fa fa-pencil"></i> Adicionar Novo
+			</button>
+
+			<button v-show="button.put" @click="put" type="button" class="btn btn-primary">
+				<i class="fa fa-refresh"></i> Atualizar
+			</button>
+
+
+			<button v-show="button.save" @click="save" type="button" class="btn btn-primary">
+				<i class="fa fa-save"></i> Salvar
+			</button>
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	<div class="row">
+
+		<div class="col-md-5 col-dm-5 col-xs-12">
+			<list 
+				ref="list">
+			</list>
+		</div>
+
+		
+		<forms ref="forms" :url="url" :host="host"></forms>
+
+	</div>
+
+</div>

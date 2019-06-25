@@ -1,0 +1,233 @@
+<div class="col-md-12 col-dm-12 col-xs-12">
+	<div class="x_panel">
+
+		<div class="x_title">
+			<h2><i class="fa fa-pencil-square-o"></i> Dados de configuração</h2>
+			<pulse-loader v-if="loader == 'on'" class="loader_forms pull-right"></pulse-loader>
+			<div class="clearfix"></div>
+		</div>
+
+		<div class="x_content">
+			<form class="form-horizontal form-label-left" method="post">
+
+				<div class="form-group" style="margin:0" v-show="type">
+					<div class="col-xs-12">
+						<ul class="list-block list-unstyled to_do">
+							<li v-if="type == 'loja'">
+								<input type="checkbox" v-model="loja.status"> 
+								<span style="position:relative;top:2px;left:2px;">Habilitar <b>{{ loja.nome }}</b></span>
+							</li>
+							<li v-else>
+								<input type="checkbox" v-model="contato.status"> 
+								<span style="position:relative;top:2px;left:2px;">Habilitar <b>{{ contato.nome }}</b></span>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div v-if="type == 'contato'">
+					<h1>{{ store.nome }}</h1>
+					<fieldset>
+						<input class="form-control" placeholder="..." type="hidden" v-model="store.id">
+						<input class="form-control" placeholder="..." type="hidden" v-model="store.slug">
+
+						<!--div class="col-xs-12">
+							<label for="">Ativar Método de Envio</label>
+							<div class="icheckbox_flat-green">
+								<input class="flat" name="status" type="checkbox" value="0" v-model="store.status" v-bind:true-value="1" v-bind:false-value="0" />
+							</div>
+						</div-->
+
+						<div class="form-group" v-bind:class="{'has-error':error.nome}">
+							<div class="col-xs-12">
+								<label for="">Nome do Modulo</label>
+								<input disabled class="form-control" placeholder="..." type="text" v-model="contato.nome">
+								<span class="help-block" v-for="error in error.nome">{{ error }}</span>
+							</div>
+						</div>
+						<div class="form-group" v-bind:class="{'has-error':error.email_para}">
+							<div class="col-xs-12">
+								<label for="">Para</label>
+								<input class="form-control" placeholder="..." type="text" v-model="contato.destino">
+								<span class="help-block" v-for="error in error.email_para">{{ error }}</span>
+							</div>
+						</div>
+						<div class="form-group" v-bind:class="{'has-error':error.email_from}">
+							<div class="col-xs-12">
+								<label for="">Remetente</label>
+								<input class="form-control" placeholder="..." type="text" v-model="contato.remetente">
+								<span class="help-block" v-for="error in error.email_from">{{ error }}</span>
+							</div>
+						</div>						
+
+						<!-- <div class="form-group" v-bind:class="{'has-error':error.email_layout}">
+							<div class="col-xs-12">
+								<label for="">Layout</label>
+								<textarea class="form-control" placeholder="..." type="text" v-model="contato.layout"></textarea>
+								<span class="help-block" v-for="error in error.email_layout">{{ error }}</span>
+							</div>
+						</div> -->
+
+						<br>
+						<fieldset>
+							<div class="col-xs-12">
+								<legend>Dados de Envio</legend>
+							</div>
+						</fieldset>
+
+						<div class="form-group">
+							<div class="col-xs-6" v-bind:class="{'has-error':error.smtp}">
+								<label for="">SMTP</label>
+								<input class="form-control" placeholder="..." type="text" v-model="contato.smtp">
+								<span class="help-block" v-for="error in error.smtp">{{ error }}</span>
+							</div>
+							<div class="col-xs-6" v-bind:class="{'has-error':error.porta}">
+								<label for="">Porta</label>
+								<input class="form-control" placeholder="..." type="text" v-model="contato.porta">
+								<span class="help-block" v-for="error in error.smtp">{{ error }}</span>
+							</div>
+						</div>
+	
+						<div class="form-group">
+							<div class="col-xs-6" v-bind:class="{'has-error':error.email_autenticacao}">
+								<label for="">Email de Autenticação</label>
+								<input class="form-control" placeholder="..." type="text" v-model="contato.email_autenticacao">
+								<span class="help-block" v-for="error in error.email_autenticacao">{{ error }}</span>
+							</div>
+							<div class="col-xs-6" v-bind:class="{'has-error':error.encriptacao}">
+								<label for="">Encriptação</label>
+								<input class="form-control" placeholder="..." type="text" v-model="contato.encriptacao">
+								<span class="help-block" v-for="error in error.encriptacao">{{ error }}</span>
+							</div>
+						</div>
+
+						<div class="form-group" v-bind:class="{'has-error':error.senha}">
+
+							<div class="col-xs-12">
+								<label for="">Senha</label>
+								<input class="form-control" placeholder="..." type="password" v-model="contato.senha">
+								<span class="help-block" v-for="error in error.senha">{{ error }}</span>
+							</div>
+						</div>
+
+					</fieldset>
+				</div>
+
+				<div v-else-if="type == 'loja'">
+					<h1>{{ store.nome }}</h1>
+					<fieldset>
+						<input class="form-control" placeholder="..." type="hidden" v-model="store.id">
+						<input class="form-control" placeholder="..." type="hidden" v-model="store.slug">
+						<input class="form-control" placeholder="..." type="hidden" v-model="store.nome">
+						<!--<div class="form-group" v-bind:class="{'has-error':error.nome}">
+							<div class="col-xs-12">
+								<label for="">Nome</label>
+								<input class="form-control" placeholder="..." type="text" v-model="store.nome">
+								<span class="help-block" v-for="error in error.nome">{{ error }}</span>
+							</div>
+						</div>-->
+
+						<div class="form-group" v-bind:class="{'has-error':error.nome}">
+							<div class="col-xs-12">
+								<label for="">Nome do Modulo</label>
+								<input disabled class="form-control" placeholder="..." type="text" v-model="loja.nome">
+							</div>
+						</div>
+
+						<div class="form-group" v-bind:class="{'has-error':error.loja}">
+							<div class="col-xs-12">
+								<label for="">Nome da Loja</label>
+								<input class="form-control" placeholder="..." type="text" v-model="loja.loja">
+								<span class="help-block" v-for="error in error.loja">{{ error }}</span>
+							</div>
+						</div>
+						<div class="form-group" v-bind:class="{'has-error':error.telefone}">
+							<div class="col-xs-12">
+								<label for="">Telefone</label>
+								<input class="form-control" placeholder="..." type="text" v-model="loja.telefone">
+								<span class="help-block" v-for="error in error.telefone">{{ error }}</span>
+							</div>
+						</div>
+						<div class="form-group" v-bind:class="{'has-error':error.horario_funcionamento}">
+							<div class="col-xs-12">
+								<label for="">Horário de Funcionamento</label>
+								<input class="form-control" placeholder="..." type="text" v-model="loja.horario_funcionamento">
+								<span class="help-block" v-for="error in error.horario_funcionamento">{{ error }}</span>
+							</div>
+						</div>
+						<br>
+						<fieldset>
+							<div class="col-xs-12">
+								<legend>Endereço</legend>
+							</div>
+						</fieldset>
+						
+						<div class="col-xs-10">
+							<div class="form-group" v-bind:class="{'has-error':error.logradouro}">
+								<label for="">Rua</label>
+								<input class="form-control" placeholder="..." type="text" v-model="loja.logradouro">
+								<span class="help-block" v-for="error in error.logradouro">{{ error }}</span>
+							</div>
+						</div>
+						<div class="col-xs-2">
+							<div class="form-group" v-bind:class="{'has-error':error.numero}">
+								<label for="">Número</label>
+								<input class="form-control" placeholder="..." type="text" v-model="loja.numero">
+								<span class="help-block" v-for="error in error.numero">{{ error }}</span>
+							</div>
+						</div>
+						
+						
+							<div class="col-xs-8">
+								<div class="form-group" v-bind:class="{'has-error':error.complemento}">
+									<label for="">Complemento</label>
+									<input class="form-control" placeholder="..." type="text" v-model="loja.complemento">
+									<span class="help-block" v-for="error in error.complemento">{{ error }}</span>
+								</div>
+							</div>
+							<div class="col-xs-4">
+								<div class="form-group" v-bind:class="{'has-error':error.cep}">
+									<label for="">CEP</label>
+									<input class="form-control" placeholder="..." type="text" v-model="loja.cep">
+									<span class="help-block" v-for="error in error.cep">{{ error }}</span>
+								</div>
+							</div>
+
+						<div class="col-xs-12">
+							<div class="row">
+								<div class="col-xs-6">
+									<div class="form-group" v-bind:class="{'has-error':error.bairro}">
+										<label for="">Bairro</label>
+										<input class="form-control" placeholder="..." type="text" v-model="loja.bairro">
+										<span class="help-block" v-for="error in error.bairro">{{ error }}</span>
+									</div>
+								</div>
+								<div class="col-xs-6">
+									<div class="form-group" v-bind:class="{'has-error':error.cidade}">
+										<label for="">Cidade</label>
+										<input class="form-control" placeholder="..." type="text" v-model="loja.cidade">
+										<span class="help-block" v-for="error in error.cidade">{{ error }}</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</fieldset>
+				</div>
+
+				<div v-else class="text-center">
+
+					<p v-for="i in 5">&nbsp;</p>
+
+					<i class="fa fa-bell-o fa-5x"></i>
+					<h3>Bem-vindo ao módulo <b>Loja</b></h3>
+					<p>Escolha um módulo ao lado para realizar as configurações.</p>
+			
+					<p v-for="i in 5">&nbsp;</p>
+
+				</div>
+			</form>
+		</div>
+
+	</div>
+</div>

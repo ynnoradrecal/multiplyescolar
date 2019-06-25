@@ -1,0 +1,96 @@
+<fieldset v-show="status">
+
+    <div v-bind:class="{'form-group': true, 'has-error': error.nome }">
+        <div class="col-xs-12">
+            <label for="">Nome da Instituição: <strong>{{ model.nome }}</strong></label>
+            <input class="form-control" placeholder="..." type="text" v-model="model.nome">
+            <span class="help-block" v-for="error in error.nome">{{ error }}</span>
+        </div>
+    </div>
+
+    <!-- <div v-bind:class="{'form-group': true, 'has-error': error.email }">
+        <div class="col-xs-12">
+            <label for="">Email:</label>
+            <input class="form-control" placeholder="..." type="text" v-model="model.email">
+            <span class="help-block" v-for="error in error.email">{{ error }}</span>
+        </div>
+    </div> -->
+
+    <div class="form-group">
+        <!-- <div class="col-md-6 col-sm-6 col-xs-12">
+            <label for="">Telefone:</label>
+            <input class="form-control" v-mask="maskpho" placeholder="(__) ____-____" type="text" v-model="model.telefone">
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <label for="">Celular:</label>
+            <input class="form-control" v-mask="maskcel" placeholder="(__) _ ____-____" type="text" v-model="model.celular">
+        </div> -->
+        <!--div class="col-md-6 col-sm-6 col-xs-12" v-bind:class="{'has-error': error.taxa }">
+            <label for="">Taxa:</label>
+            <small class="pull-right" style="position:relative;top:7px;right:4px;">
+                Taxa adicionada as fotos da instituição</small>
+            <input class="form-control" placeholder="..." type="text" v-model="model.taxa">
+            <span class="help-block" v-for="error in error.taxa">{{ error }}</span>
+        </div-->
+    </div>
+
+    <br>
+    <fieldset>
+        <div class="col-xs-12">
+            <legend>Endereço</legend>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6 col-sm-4 col-xs-12" v-bind:class="{'has-error':error.cep}">
+                <label for="">CEP:</label>
+                <input class="form-control" v-mask="'99999-999'" placeholder="_____-__" type="text" v-model="model.cep" @keyup="getAddressCep">
+                <span class="help-block" v-for="error in error.cep">{{ error }}</span>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-12" v-bind:class="{'has-error':error.numero}">
+                <label for="">Numero:</label>
+                <input class="form-control" placeholder="..." type="text" v-model="model.numero">
+                <span class="help-block" v-for="error in error.numero">{{ error }}</span>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <label for="">Complemento:</label>
+                <input class="form-control" placeholder="..." type="text" v-model="model.complemento">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12" v-bind:class="{'has-error':error.logradouro}">
+                <label for="">Endereço:</label>
+                <input class="form-control" placeholder="..." type="text" v-model="model.logradouro">
+                <span class="help-block" v-for="error in error.logradouro">{{ error }}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-5 col-sm-5 col-xs-12" v-bind:class="{'has-error':error.bairro}">
+                <label for="">Bairro:</label>
+                <input class="form-control" placeholder="..." type="text" v-model="model.bairro">
+                <span class="help-block" v-for="error in error.bairro">{{ error }}</span>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12" v-bind:class="{'has-error':error.estado}">
+                <label for="">Estado:</label>
+                <input class="form-control" placeholder="..." type="text" v-model="model.estado">
+                <span class="help-block" v-for="error in error.estado">{{ error }}</span>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12" v-bind:class="{'has-error':error.cidade}">
+                <label for="">Cidade:</label>
+                <input class="form-control" placeholder="..." type="text" v-model="model.cidade">
+                <span class="help-block" v-for="error in error.cidade">{{ error }}</span>
+            </div>
+        </div>
+    </fieldset>
+
+    <br>
+    <fieldset>
+        <div class="col-xs-12">
+            <legend>Descrição</legend>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12">
+                <textarea class="form-control" rows="3" placeholder="Descrição..." v-model="model.descricao"></textarea>
+            </div>
+        </div>
+    </fieldset>
+
+</fieldset>

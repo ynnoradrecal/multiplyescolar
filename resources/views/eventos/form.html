@@ -1,0 +1,48 @@
+<div class="col-md-7 col-dm-7 col-xs-12">
+    <div class="x_panel">
+
+        <div class="x_title">
+            <h2><i class="fa fa-pencil-square-o"></i> Novo Evento</h2>
+            <pulse-loader v-show="bool.form" class="pull-right"></pulse-loader>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="x_content">
+            <form class="form-horizontal form-label-left" method="post" enctype="multipart/form-data">
+                <fieldset>
+                    <div class="form-group" v-bind:class="{'has-error':error.name}">
+                        <div class="col-xs-12">
+                            <label for="">Nome:</label>
+                            <input class="form-control" placeholder="..." type="text" v-model="model.name">
+                            <span class="help-block" v-for="error in error.name">{{ error.replace('name', 'Nome') }}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <upload ref="upload" :host="host"></upload>
+                        <div class="col-xs-12" v-bind:class="{'has-error':error.capa}">
+                            <label for="">Capa:</label><br>
+                            <figure v-show="model.capa.length" v-for="item in model.capa" class="thumbnail">
+                                <img :src="url + item.path +'/'+ item.capa" alt="">
+                            </figure>
+                            <button v-show="image.save" type="button" class="btn btn-primary" data-toggle="modal" data-target="#drop">
+                                <i class="fa fa-plus"></i> Imagem
+                            </button>
+                            <button v-show="image.delete" type="button" class="btn btn-danger" @click="excluir_images">
+                                <i class="fa fa-trash"></i> Excluir
+                            </button>
+                            <span class="help-block" v-for="error in error.capa">{{ error.replace('capa', 'Capa') }}</span>
+                        </div>
+                    </div>
+                    <div class="form-group" v-bind:class="{'has-error':error.description}">
+                        <div class="col-xs-12">
+                            <label for="">Descrição:</label>
+                            <textarea class="form-control" rows="3" placeholder="..." v-model="model.description"></textarea>
+                            <span class="help-block" v-for="error in error.description">{{ error.replace('description', 'Descrição') }}</span>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,114 @@
+#galeria{
+
+	padding: 10px 0 50px 0;
+
+	.next-button{
+		margin-right: 60px;
+	}
+
+	#waterfall{
+		.single-image{
+			
+			position: relative;
+			overflow: hidden;
+			border: solid 3px #fff;
+			
+			&:hover{
+				.buttons{
+					display: block;
+				}
+			}
+			img{
+				border: solid 1px #ddd;
+			}
+			.buttons{
+				background-color: rgba( 255, 255, 255, 0.98);
+				position: absolute;
+				margin-top: 0;
+				width: 100%;
+
+				.single-button{
+
+					margin-right: 10px;
+
+					a{
+						i{
+							font-size: 24px;
+							color: #009DE2;
+							margin-left: 5px;
+						}
+
+						&:hover{
+							text-decoration: none;
+							i{
+								color: #009DE2;
+							}
+						}
+					}
+
+					// .checkbox{
+					// 	// margin-top: 3px;
+					// 	// margin-left: -30px;
+					// 	// position: absolute;
+
+					// 	label {
+					// 		display: inline;
+					// 		margin-top: 16px;
+					// 		margin-right: 6px;
+					// 	}
+
+					// 	.regular-checkbox {
+					// 		display: none;
+					// 	}
+
+					// 	.regular-checkbox + label {
+					// 		background-color: #fafafa;
+					// 		border: 2px solid #009DE2;
+					// 		box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+					// 		// padding: 9px 9px;
+					// 		border-radius: 10px;
+					// 		display: inline-block;
+					// 		position: relative;
+					// 		margin-top: 12px;
+
+					// 		&:hover{
+					// 			border-color: #0074A6;
+					// 		}
+					// 	}
+
+					// 	.regular-checkbox + label:active, .regular-checkbox:checked + label:active {
+					// 		box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+					// 	}
+
+					// 	.regular-checkbox:checked + label {
+					// 		background-color: #fff;
+					// 		border: 2px solid #009DE1;
+					// 		padding: 9px 9px;
+					// 		box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+					// 		color: #009DE1;
+					// 	}
+
+					// 	.regular-checkbox:checked + label:after {
+					// 		content: '\2714';
+					// 		font-size: 14px;
+					// 		position: absolute;
+					// 		top: -2px;
+					// 		left: 3px;
+					// 		color: #009DE1;
+					// 	}
+					// }
+				}
+			}
+		
+		}
+	}
+
+	.buttons-body-foot{
+		margin-top: 30px;
+		.pagination{
+			margin: 0;
+			margin-left: 20px;
+		}
+	}
+
+}

@@ -1,0 +1,44 @@
+<div v-show="type == 'google'">
+	<div class="x_content">
+		<form class="form-horizontal form-label-left" method="post">
+
+			<div class="form-group" style="margin:0">
+				<div class="col-xs-12">
+					<ul class="list-block list-unstyled to_do">
+						<li>
+							<input type="checkbox" v-model="store.status"> 
+							<span style="position:relative;top:2px;left:2px;">Habilitar <b>{{ store.nome }}</b></span>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<fieldset>
+				
+				<div class="form-group" v-bind:class="{'has-error':error.nome}">
+					<div class="col-xs-12">
+						<label for="">Nome do Modulo</label>
+						<input disabled class="form-control" placeholder="..." type="text" v-model="store.nome">
+						<span class="help-block" v-for="error in error.nome">{{ error }}</span>
+					</div>
+				</div>
+
+				<div class="form-group" v-bind:class="{'has-error':error.analytics_code}">
+					<div class="col-xs-12">
+						<label for="">Código do Analytics</label>
+						<textarea rows="6" class="form-control" placeholder="..." v-model="store.analytics_code"></textarea>
+						<span class="help-block" v-for="error in error.analytics_code">{{ error }}</span>
+					</div>
+				</div>
+
+				<div class="form-group" v-bind:class="{'has-error':error.conversion_code}">
+					<div class="col-xs-12">
+						<label for="">Código de Conversão</label>
+						<textarea rows="6" class="form-control" placeholder="..." type="text" v-model="store.conversion_code"></textarea>
+						<span class="help-block" v-for="error in error.conversion_code">{{ error }}</span>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>

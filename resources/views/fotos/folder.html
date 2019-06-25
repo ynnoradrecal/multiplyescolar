@@ -1,0 +1,56 @@
+<div class="x_panel">
+    <div class="x_title">
+        <h2><i class="fa fa-folder-open"></i> Galeria de mídia <small>{{ product.nome }}</small></h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content galeria">
+
+        <!-- <ul id="waterfall" v-show="!bool.load">  
+            <li v-for="(image, i) in images">
+                <div class="">
+                    <img :src="image.url" alt="" class>
+                    <button @click.prevent="DelImage(i)" type="button" class="btn btn-danger btn-sm pull-right">
+                        <i class="fa fa-times"></i> Excluir
+                    </button>
+                </div>
+            </li>
+        </ul>  
+ -->
+        
+        <div class="gall-clean" v-show="!images.length && !bool.load">
+            <div class="col-xs-offset-3 col-xs-6 text-center">
+                <i class="fa fa-inbox fa-5x"></i>
+                <h3>Bem-vindo à galeria de mídia <b>{{ product.nome }}</b></h3>
+                <p>Sua galeria esta vazia clique no botão abaixo para adicionar novas fotos.</p>
+                <button @click="AddFotos" type="button" class="btn btn-primary">
+                    <i class="fa fa-plus"></i> Adicionar novas fotos
+                </button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="col-md-55" v-show="!bool.load" v-for="(image, i) in images">
+            <div class="thumbnail">
+                <div class="image view view-first">
+                    <img style="width: 100%; display: block;" :src="url + image.thumb" alt="">
+                    <div class="mask">
+                        <p>&nbsp;&nbsp;</p>
+                        <div class="tools tools-bottom">
+                            <a href="#" @click.prevent="DelImage(i)"><i class="fa fa-times"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="caption">
+                    <p><b>Nome:</b> {{ image.name }}</p>
+                    <p><b>Extensão:</b> {{ image.ext }}</p>
+                    <p><b>Dimensões:</b> {{ image.dimension || 'Null' }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div v-show="bool.load" style="padding:180px 0">
+            <pulse-loader :color="spinner.color"></pulse-loader>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,153 @@
+<fieldset v-show="status">
+    <div class="form-group" v-bind:class="{'has-error':error.name}">
+        <div class="col-xs-6">
+            <label for="">Nome:</label>
+            <input class="form-control" placeholder="..." type="text" v-model="model.name">
+            <span class="help-block" v-for="error in error.name">{{ error }}</span>
+        </div>
+        <div class="col-xs-6">
+            <label for="">Sobrenome:</label>
+            <input class="form-control" placeholder="..." type="text" v-model="model.last_name">
+            <span class="help-block" v-for="error in error.last_name">{{ error }}</span>
+        </div>
+    </div>
+    <div class="form-group" v-bind:class="{'has-error':error.email}">
+        <div class="col-xs-12">
+            <label for="">Email:</label>
+            <input class="form-control" placeholder="..." type="text" v-model="model.email">
+            <span class="help-block" v-for="error in error.email">{{ error }}</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <label for="">Telefone:</label>
+            <input class="form-control" v-mask="'( 99 ) 9999-9999'" placeholder="( __ ) ____-____" type="text" v-model="model.telefone">
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <label for="">Celular:</label>
+            <input class="form-control" v-mask="'( 99 ) 9 9999-9999'" placeholder="( __ ) _ ____-____" type="text" v-model="model.celular">
+        </div>
+    </div>
+    <div class="form-group" v-bind:class="{'has-error':error.data_nascimento}">
+        <div class="col-xs-6">
+            <label for="">Data de Nascimento:</label>
+            <input class="form-control" v-mask="'99/99/9999'" placeholder="__/__/____" type="text" v-model="model.data_nascimento">
+            <span class="help-block" v-for="error in error.data_nascimento">{{ error }}</span>
+        </div>
+        <div class="col-xs-6">
+            <label for="">CPF:</label>
+            <input class="form-control" v-mask="'999.999.999-99'" placeholder="___.___.___-__" type="text" v-model="model.cpf">
+            <span class="help-block" v-for="error in error.cpf">{{ error }}</span>
+        </div>
+    </div>
+    
+    <div class="form-group" v-show="model.address">
+        <div class="col-xs-12">
+            <legend>Endereço</legend>
+        </div>
+        <div class="col-xs-12">
+            
+            <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+
+                <div class="panel" v-for="(item, i) in model.address">
+                    <a class="panel-heading" role="tab" :id="'heading'+ i" 
+                        data-toggle="collapse" data-parent="#accordion" :href="'#collapse'+ i" aria-expanded="true" :aria-controls="'collapse'+ i">
+                        <h4 class="panel-title">
+                            <b>{{ (i + 1) +'# '+ item.logradouro }}</b>
+                        </h4>
+                    </a>
+                    <div :id="'collapse'+ i" class="panel-collapse collapse" role="tabpanel" :aria-labelledby="'heading'+ i">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-xs-6" style="padding-left:0;">
+                                    <label for="">Endereço</label>
+                                    <input class="form-control" placeholder="..." type="text" v-model="model.address[i].logradouro">
+                                </div>
+                                <div class="col-xs-6" style="padding-left:0;">
+                                     <label for="">Numero</label>
+                                    <input class="form-control" placeholder="..." type="text" v-model="model.address[i].numero">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-6" style="padding-left:0;">
+                                    <label for="">CEP</label>
+                                    <input class="form-control" placeholder="..." type="text" v-model="model.address[i].cep">
+                                </div>
+                                <div class="col-xs-6" style="padding-left:0;">
+                                     <label for="">Complemento</label>
+                                    <input class="form-control" placeholder="..." type="text" v-model="model.address[i].complemento">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-4" style="padding-left:0;">
+                                    <label for="">Estado</label>
+                                    <input class="form-control" placeholder="..." type="text" v-model="model.address[i].estado">
+                                </div>
+                                <div class="col-xs-4">
+                                     <label for="">Cidade</label>
+                                    <input class="form-control" placeholder="..." type="text" v-model="model.address[i].cidade">
+                                </div>
+                                <div class="col-xs-4" style="padding-right:0;">
+                                     <label for="">Bairro</label>
+                                    <input class="form-control" placeholder="..." type="text" v-model="model.address[i].bairro">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- <fieldset>
+        <div class="col-xs-12">
+            <legend>Endereço</legend>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6 col-sm-4 col-xs-12" v-bind:class="{'has-error':error.cep}">
+                <label for="">CEP:</label>
+                <input class="form-control" v-mask="'#####-###'" placeholder="..." type="text" v-model="model.cep">
+                <span class="help-block" v-for="error in error.cep">{{ error }}</span>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-12" v-bind:class="{'has-error':error.numero}">
+                <label for="">Numero:</label>
+                <input class="form-control" placeholder="..." type="text" v-model="model.numero">
+                <span class="help-block" v-for="error in error.numero">{{ error }}</span>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <label for="">Complemento:</label>
+                <input class="form-control" placeholder="..." type="text" v-model="model.complemento">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12" v-bind:class="{'has-error':error.logradouro}">
+                <label for="">Endereço:</label>
+                <input class="form-control" placeholder="..." type="text" v-model="model.logradouro">
+                <span class="help-block" v-for="error in error.logradouro">{{ error }}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-5 col-sm-5 col-xs-12" v-bind:class="{'has-error':error.bairro}">
+                <label for="">Bairro:</label>
+                <input class="form-control" placeholder="..." type="text" v-model="model.bairro">
+                <span class="help-block" v-for="error in error.bairro">{{ error }}</span>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12" v-bind:class="{'has-error':error.estado}">
+                <label for="">Estado:</label>
+                <select class="form-control" v-model="model.estado">
+                    <option>...</option>
+                    <option :value="item.nome" v-for="item in list.estados">{{ item.nome }}</option>
+                </select>
+                <span class="help-block" v-for="error in error.estado">{{ error }}</span>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12" v-bind:class="{'has-error':error.cidade}">
+                <label for="">Cidade:</label>
+                <input class="form-control" placeholder="..." type="text" v-model="model.cidade">
+                <span class="help-block" v-for="error in error.cidade">{{ error }}</span>
+            </div>
+        </div>
+    </fieldset> -->
+
+</fieldset>

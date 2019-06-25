@@ -1,0 +1,45 @@
+<div class="form-group">
+    <div class="col-xs-12">
+        <legend>Regras</legend>
+    </div>
+    <div class="col-xs-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Condição</th>
+                    <th>Quantidade</th>
+                    <th>Valor</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr v-show="condicao.length" v-for="(object, i) in condicao" >
+                    <td><span>{{ i + 1 }}</span></td>
+                    <td>
+                        <select class="form-control" v-model="condicao[i].valor">
+                            <option value="">...</option>
+                            <option :value="'<='">Igual ou Menor que</option>
+                            <option :value="'>='">Igual ou Maior que</option>
+                        </select>
+                    </td>
+                    <td><input class="form-control" type="number" min="0" v-model="quantidade[i].valor"></td>
+                    <td><input class="form-control preco" type="text" v-model="preco[i].valor" v-mask="'money'"></td>
+                    <td class="text-center" >
+                        <button @click.stop="DestroyRule(i, object.id)" type="button" class="btn btn-danger">
+                            <i class="fa fa-times-circle-o fa-lg"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5" class="text-right" >
+                        <button @click.prevent="AddNewRule" type="button" class="btn btn-primary">
+                            <i class="fa fa-plus"></i> Adicionar Regra
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

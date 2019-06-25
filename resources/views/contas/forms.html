@@ -1,0 +1,19 @@
+<div class="col-md-7 col-sm-7-col-xs-12">
+	<div class="x_panel">
+		<div class="x_title">
+			<h2><i :class="title.class"></i> {{ title.text }}</h2>
+			<pulse-loader v-show="bool.load" :color="color" class="loader_forms pull-right"></pulse-loader>
+			<div class="clearfix"></div>
+		</div>
+		<div class="x_content">
+			<form class="form-horizontal form-label-left" method="post">
+
+				<instituicao ref="instituicao" :error="error" ></instituicao>
+				<alunos ref="alunos" :error="error" ></alunos>
+				<outros ref="outros"></outros>
+
+			</form>
+		</div>
+	</div>
+
+</div>

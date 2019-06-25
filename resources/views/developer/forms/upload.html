@@ -1,0 +1,22 @@
+<!-- Modal -->
+<div class="modal fade" id="drop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <dropzone 
+          ref="dropzone"
+          :id="'VueDropzone'" 
+          :url="host +'/upload'"
+          :headers="headers"
+          :thumbnail-height="thumbnailHeight"
+          :thumbnail-width="thumbnailWidth"
+          :max-number-of-files="1"
+          :accepted-file-types="acceptedFileTypes"
+          :language="lang"
+          v-on:vdropzone-success="ShowSucess">
+          <input type="hidden" name="methods" :value="'upload'">
+        </dropzone>  
+      </div>
+    </div>
+  </div>
+</div>

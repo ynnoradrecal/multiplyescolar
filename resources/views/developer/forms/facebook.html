@@ -1,0 +1,63 @@
+<div class="x_content" v-show="type == 'facebook'">
+	
+	<form class="form-horizontal form-label-left" method="post">
+		
+		<div class="form-group" style="margin:0">
+			<div class="col-xs-12">
+				<ul class="list-block list-unstyled to_do">
+					<li>
+						<input type="checkbox" v-model="store.status"> 
+						<span style="position:relative;top:2px;left:2px;">Habilitar <b>{{ store.nome }}</b></span>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="form-group" v-bind:class="{'has-error':error.nome}">
+			<div class="col-xs-12">
+				<label for="">Nome do Modulo</label>
+				<input disabled class="form-control" placeholder="..." type="text" v-model="store.nome">
+				<span class="help-block" v-for="error in error.nome">{{ error }}</span>
+			</div>
+		</div>
+
+		<div class="form-group" v-bind:class="{'has-error':error.titulo}">
+			<div class="col-xs-12">
+				<label for="">Titulo</label>
+				<input class="form-control" placeholder="..." name="nome" type="text" v-model="store.titulo">
+				<span class="help-block" v-for="error in error.titulo">{{ error }}</span>
+			</div>
+		</div>
+
+		<div class="form-group" v-bind:class="{'has-error':error.descricao}">
+			<div class="col-xs-12">
+				<label for="">Descrição</label>
+				<textarea rows="6" class="form-control" placeholder="..." v-model="store.descricao"></textarea>
+				<span class="help-block" v-for="error in error.descricao">{{ error }}</span>
+			</div>
+		</div>
+
+		<br/>
+		<div class="form-group" v-bind:class="{'has-error':error.descricao}">
+			<upload ref="upload" :host="host"></upload>
+			<div class="col-xs-12">
+                <legend> 
+					Imagem Principal 
+					<pulse-loader v-show="bool.load" class="pull-right"></pulse-loader>
+				</legend>
+                <figure v-show="store.file" v-for="item in store.file" class="thumbnail">
+                    <img :src="url + item.path +'/'+ item.image" alt="">
+                </figure>
+                <button v-show="image.save" type="button" class="btn btn-primary" data-toggle="modal" data-target="#drop">
+                    <i class="fa fa-plus"></i> Imagem
+                </button>
+                <button v-show="image.delete" type="button" class="btn btn-danger" @click="excluir_images">
+                    <i class="fa fa-trash"></i> Excluir
+                </button>
+                <span class="help-block" v-for="error in error.capa">{{ error.replace('capa', 'Capa') }}</span>
+            </div>
+	
+		</div>
+
+	</form>
+</div>

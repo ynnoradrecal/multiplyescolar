@@ -1,0 +1,28 @@
+#eventos{
+  padding-bottom: 30px;
+
+  .grid{
+    position: relative;
+    overflow: hidden;
+    height: auto !important;
+
+    .mask{
+      display: block;
+      position: absolute;
+      overflow: hidden;
+      z-index: 1;
+      color: #fff;
+      top: 0px;
+      left: -368px;
+      padding: 0 10px 4px 15px;
+      background-color: rgba( 0, 0, 0, 0.8 );
+      height: 100%;
+      width: 100%;
+
+    }
+
+  }
+
+}
+
+

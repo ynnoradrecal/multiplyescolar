@@ -1,0 +1,30 @@
+<div class="" id="fotos">
+
+	<div class="page-title">
+		
+        <div class="title_left">
+			<h3>{{ title }}</h3>
+		</div>
+		
+        <div class="title_right text-right">
+            <button @click="Back" type="button" class="btn btn-default" v-show="windows.folder || windows.upload">
+				<i class="fa fa-sign-out"></i> Voltar
+			</button>
+			<!-- <button @click="OpenWindow('folder')" type="button" class="btn btn-primary" v-show="windows.upload">
+				<i class="fa fa-folder-open"></i> Galeria
+			</button> -->
+		</div>
+
+	</div>
+
+	<div class="clearfix"></div>
+
+	<div class="row">
+
+		<list v-show="windows.list" ref="list"></list>
+        <folder v-show="windows.folder" :url="url" ref="folder" :product="product"></folder>
+        <upload v-show="windows.upload" ref="upload" :product="product" :host="host"></upload>
+
+    </div>
+
+</div>	

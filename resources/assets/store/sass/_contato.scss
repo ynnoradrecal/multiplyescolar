@@ -1,0 +1,90 @@
+
+#title-contato{
+	h3{
+		padding: 50px 0 25px 0;
+		font-family: Roboto !important;
+		color: #009de1;
+		font-weight: 700;
+		font-size: 40px;
+		border-bottom: dotted 3px #009de1;
+	}
+
+}
+
+
+
+#contato{
+	
+	margin-bottom: 50px;
+
+	p{ font-size: 16px; margin-top: 20px; }
+
+	.form-cad{
+		padding: 10px 0;
+		margin-top: 60px;
+
+		label{
+			color: #666;
+		}
+
+		input[type="text"], input[type="password"], input[type="email"], select, textarea{
+			background-color: #eee;
+			border: none;
+			box-shadow: none;
+			border-radius: 0px;
+			padding: 4px 10px;
+			height: 48px !important;
+		}
+
+		textarea{
+			height: 180px !important;
+		}
+
+		input[type="submit"]{
+			padding: 10px 40px;
+		}
+
+	}
+
+	.contact-info{
+		margin-top: 110px;
+		
+
+		i{
+			font-size: 24px;
+			color: #009DE1;
+		}
+
+		.itens{
+
+			border-left: dotted 2px #009DE1;
+			padding: 15px 0;
+			padding-left: 30px;
+			margin-bottom: 15px;
+
+			.item{
+				padding: 10px 0;
+				font-family: Roboto !important;
+				font-size: 16px;
+			}
+		}
+
+		.item-social {
+			a{
+				padding: 20px 10px;
+				text-decoration: none;
+				&:hover{
+					text-decoration: none;
+				}
+			}
+			i{
+				font-size: 26px;				
+			}
+		}
+	}
+	
+}
+
+.map{
+	height: 450px;
+}

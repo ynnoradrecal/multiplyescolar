@@ -1,0 +1,27 @@
+<div class="col-md-12 col-dm-12 col-xs-12">
+	<div class="x_panel">
+
+		<div class="x_title">
+			<h2><i class="fa fa-pencil-square-o"></i> Configuração</h2>
+			<pulse-loader v-show="bool.load" class="loader_forms pull-right"></pulse-loader>
+			<div class="clearfix"></div>
+		</div>
+
+		<facebook ref="facebook" :host="host" :type="type"></facebook>
+
+		<google ref="google" :type="type"></google>
+
+		<div v-if="type == ''" class="text-center">
+			
+			<p v-for="i in 5">&nbsp;</p>
+
+			<i class="fa fa-bell-o fa-5x"></i>
+			<h3>Bem-vindo ao módulo <b>Developer</b></h3>
+			<p>Escolha um módulo ao lado para realizar as configurações.</p>
+	
+			<p v-for="i in 5">&nbsp;</p>
+
+		</div>
+		
+	</div>
+</div>

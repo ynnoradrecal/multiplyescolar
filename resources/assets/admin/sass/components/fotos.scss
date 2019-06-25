@@ -1,0 +1,44 @@
+#waterfall {
+	.btn { margin: 6px 0; }
+	li > div {
+		border: none !important;
+		box-shadow: none !important;
+	}
+}
+
+.vue-dropzone {
+	border: 6px dashed #e5e5e5;
+    .dz-message {
+        i { display: none; }
+        font-size: 18px;
+        .btn_upload {
+    	    border: 1px solid #e5e5e5;
+		    width: 266px;
+		    padding: 12px 0;
+		    font-size: 14px;
+		    text-transform: uppercase;
+		    margin: 0 auto;
+		    margin-top: 8px;
+        }
+    }
+}
+
+.modal {
+	z-index: 9999;
+}
+
+.bt_action {
+	padding-left: 5px;
+}
+
+.galeria {
+
+	.thumbnail .caption {
+		p { word-wrap: break-word; }
+	}
+
+	.gall-clean {
+		padding: 140px 0;
+	}
+
+}

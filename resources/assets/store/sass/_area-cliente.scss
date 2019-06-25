@@ -1,0 +1,318 @@
+#clientes{
+    padding: 40px 0;
+    
+    .sidebar{
+        padding: 15px 15px 20px 15px;
+        background: #F4F4F4;
+        margin-top: 30px; 
+        
+        header{
+
+            background: transparent;         
+            padding: 40px 26px;
+            border-bottom: dotted 3px #009DE0;
+            
+            .image-profile{
+                
+                a{
+                    background-color: #009DE2;
+                    padding: 10px 25px;
+                    border-radius: 90px;
+                    font-size: 60px;
+                    color: #fff;
+
+                    &:hover{
+                        background-color: #C9C9C9;
+                    }
+                }
+                
+            }
+
+            h3{
+                color: #555;
+                font-size: 26px;
+                span{
+                    font-size: 16px;
+                }
+            }
+        }
+
+        nav{
+            margin-top: 2px;
+
+            ul{
+                margin: 0;
+                padding: 0;
+
+                li{
+                    display: block;
+                    a{
+                        display: block;
+                        padding: 24px 20px;
+                        color: #555;
+                        font-size: 20px;
+                        text-decoration: none;
+                        border-bottom: 2px solid #fff;
+
+                        &:hover{
+                            color: #009DE0;
+                        }
+                    }
+
+                    &:last-child{
+                        a{
+                            border-bottom: 0px solid #fff;
+                        }
+                    }
+                }
+
+            }
+        }
+
+    }
+    .content-client-data{
+		margin-top: 70px;
+
+		h1{
+			padding-left: 15px;
+			color: #009DE0;
+		}
+
+		.list-endereco{
+			border: dotted 2px #009DE0;
+			padding: 20px 20px 15px 20px;
+			margin-top: 20px;
+
+			h3{
+				font-size: 24px;
+				color: #009DE0;
+				margin-top: 0;
+			}
+
+			.header-box{
+				.nome{
+					font-size: 19px;
+					font-weight: 700;
+				}
+				span{
+					display: block;
+					font-size: 14px;
+					font-weight: 500;
+				}
+			}
+
+			.footer-box{
+				border-top: dotted 2px #009DE0;
+				margin-top: 16px;
+				padding: 15px 10px 0 10px;
+
+				label{
+					font-size: 15px;
+					font-weight: 700;
+					color: #009DE0;
+					margin-left: 10px;
+				}
+			}
+		}
+
+		.add-endereco{
+			margin-top: 30px;
+			padding: 30px;
+			border-top: solid 1px #eee;
+		}
+
+		
+		.list-pedido{
+			border: dotted 2px #009DE0;
+			padding: 20px 20px 15px 20px;
+			margin-top: 20px;
+
+			h3{
+				font-size: 20px;
+				color: #009DE0;
+				margin-bottom: 10px;
+			}
+
+			.header-box{
+				.nome{
+					font-size: 19px;
+					font-weight: 700;
+				}
+				.dates{
+					h4{
+						font-size: 20px;
+						color: #009DE0;
+						margin-top: 14px;
+					}
+					span{
+						font-weight: 700;
+						color: #000;
+					}
+				}
+				.status-entrega{
+					border-left: solid 3px #009DE0;
+					padding: 15px 10px ;
+					h5{
+						font-weight: 700;
+					}
+					h3{
+						margin-top: 5px;
+					}
+				}
+				.info{
+					border-left: solid 3px #009DE0;
+					padding: 15px 10px ;
+					h3{
+						margin: 0;
+					}
+				}
+				span{
+					display: block;
+					font-size: 14px;
+					font-weight: 500;
+				}
+
+				.status-entrega, .dates, .info{
+					min-height: 150px;
+				}
+			}
+
+			.footer-box{
+				border-top: dotted 2px #009DE0;
+				margin-top: 16px;
+				padding: 15px 10px 0 10px;
+
+				label{
+					font-size: 15px;
+					font-weight: 700;
+					color: #009DE0;
+					margin-left: 10px;
+				}
+			}
+
+			.show-pedido{
+				margin-top: 0px;
+				padding: 0 30px;
+			}
+		}
+
+	}
+
+	.detalhe-pedido{		
+
+		h1{
+			span{
+				color: #000;
+			}
+		}
+		.itens{
+			.header{
+				font-weight: 700 !important;
+				background: #009DE0 !important;
+				color: #fff;
+				padding: 4px;
+			}
+			.row:nth-child(2n+0){
+				background: #eee;
+			}
+		}
+		.detalhe-container{
+			border: dotted 2px #009DE0;
+			padding: 20px 20px 38px 20px;
+			margin-top: 20px;
+
+			h3{
+				font-size: 20px;
+			}
+			span{				
+				display: block;
+			}
+
+			.info{
+				span{
+					margin-left: 15px;
+					margin-top: 10px;
+				}
+			}
+
+			h4{
+				color: #333;
+			}
+			 .endereco, .price{
+				// border-left: solid 3px #009DE0;
+				padding: 8px 15px 15px 15px;
+				background: #eee;
+			}
+			// .info, .endereco, .price{
+				
+			// }
+		}
+	}
+
+	form{
+		padding: 10px 0;
+
+		label{
+			color: #666;
+		}
+
+		select{
+			width: 100%;
+		}
+
+		input[type="text"], input[type="password"], input[type="email"], select, textarea{
+			background-color: #eee !important;
+			border: none;
+			box-shadow: none;
+			border-radius: 0px;
+			padding: 4px 10px;
+			height: 48px !important;
+		}
+
+		textarea{
+			height: 180px !important;
+		}
+
+		input[type="submit"]{
+			padding: 10px 40px;
+		}
+
+		.has-error{
+			input{
+				border:solid 1px red;
+			}
+		}
+
+		#disabledInput{
+			opacity: 0.6;
+		}
+
+	}
+
+    .content-client-data{
+        margin-top: 30px;
+        padding: 40px;
+    }
+}
+
+@media screen and (min-width: 200px) and (max-width: 768px){
+	
+	.content-client-data{
+
+		h1{
+			font-size: 26px;
+		}
+
+		.content-client-data{
+			.list-endereco{
+				.footer-box{
+					label{
+						font-size: 14px !important;
+					}
+				}
+			}
+		}
+
+	}
+
+}
